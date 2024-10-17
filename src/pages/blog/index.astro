@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const posts = Object.values(await import.meta.glob('./*.md', { eager: true}))
+console.log(posts)
+---
+
+<Layout title="Blog">
+  <h1 class="text-3xl font-bold">Blog Page</h1>
+
+  <ul class="flex flex-col gap-6 mt-16">
+    {posts.map(post => 
+      <li class="border border-gray-200 rounded">
+        <a href={post.url}>{post.frontmatter.title}</a>
+        <p>{post.frontmatter.description}</p>
+      </li>
+    )}
+  </ul>
+
+  <!-- <a class="border border-white" href="/blog/mi-primer-articulo" >
+    Mi primer articulo
+  </a>
+  <a class="border border-white" href="/blog/mi-segundo-articulo" >
+    Mi segundo articulo
+  </a>
+  <a class="border border-white" href="/blog/mi-tercer-articulo" >
+    Mi tercer articulo
+  </a> -->
+</Layout>
