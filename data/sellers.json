@@ -1,0 +1,42 @@
+[
+  {
+    "id": "techworld",
+    "name": "TechWorld",
+    "bio": "Especialistas en dispositivos tecnológicos de última generación.",
+    "products": [
+      "Smartphone X Pro",
+      "Laptop Ultrabook Z"
+    ],
+    "avatar": "https://randomuser.me/api/portraits/men/4.jpg"
+  },
+  {
+    "id": "gadgethub",
+    "name": "GadgetHub",
+    "bio": "Todo en gadgets y accesorios electrónicos para tu día a día.",
+    "products": [
+      "Auriculares Bluetooth Pro",
+      "Smartwatch Xtreme"
+    ],
+    "avatar": "https://randomuser.me/api/portraits/women/5.jpg"
+  },
+  {
+    "id": "techgear",
+    "name": "TechGear",
+    "bio": "Líderes en soluciones tecnológicas y accesorios para profesionales.",
+    "products": [
+      "Teclado Mecánico RGB",
+      "Cámara Web HD Pro"
+    ],
+    "avatar": "https://randomuser.me/api/portraits/men/6.jpg"
+  },
+  {
+    "id": "gadgetgalaxy",
+    "name": "Gadget Galaxy",
+    "bio": "Líderes en la galaxia y en soluciones tecnológicas.",
+    "products": [
+      "Samsung Galaxy",
+      "Webcam 4k"
+    ],
+    "avatar": "https://randomuser.me/api/portraits/women/6.jpg"
+  }
+]

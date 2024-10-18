@@ -6,6 +6,8 @@ layout: '../../layouts/BlogLayout.astro'
 
 # Mi Primer Artículo
 
+Más información sobre el vendedor aquí [TechWorld](/sellers/techworld)
+
 Bienvenido a mi primer artículo en TechBazar. En este espacio, compartiré mis experiencias y conocimientos sobre tecnología, programación y desarrollo web.
 
 ## Introducción

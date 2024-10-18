@@ -1,0 +1,13 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [{ params: { id: 'techworld', lang: 'en' } }, { params: { id: 'techworld', lang: 'es' } }];
+}
+
+const { id, lang } = Astro.params;
+---
+
+<Layout>
+  <h1>¡Visitando el detalle del vendedor: #{id} {lang}!</h1>
+</Layout>

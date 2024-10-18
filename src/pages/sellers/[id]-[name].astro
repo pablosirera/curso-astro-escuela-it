@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { id: 'techworld', name: 'TechWorld' } },
+    { params: { id: 'gadgethub', name: 'GadgetHub' } },
+    { params: { id: 'techgear', name: 'TechGear' } },
+    { params: { id: 'gadgetgalaxy', name: 'GadgetGalaxy' } },
+  ];
+}
+
+const { id } = Astro.params;
+---
+
+<Layout title={`Vendedor - ${id}`}>
+  <h1>Página detalle del vendedor #{id}</h1>
+</Layout>
