@@ -2,6 +2,8 @@
   "editor.defaultFormatter": "astro-build.astro-vscode",
   "editor.formatOnSave": true,
   "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode"
+    "editor.defaultFormatter": "astro-build.astro-vscode",
+    "typescript.validate.enable": false,
+    "javascript.validate.enable": false
   }
 }

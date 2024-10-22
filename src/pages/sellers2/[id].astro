@@ -1,6 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
+export function getStaticPaths() {
+  return [
+    { params: { id: 'techworld' } },
+    { params: { id: 'gadgethub' } },
+    { params: { id: 'techgear' } },
+    { params: { id: 'gadgetgalaxy' } },
+  ];
+}
+
 export const prerender = false;
 
 const { id } = Astro.params;

@@ -1,4 +1,6 @@
 ---
+// @ts-nocheck
+
 import Layout from '../../layouts/Layout.astro';
 
 const posts = Object.values(await import.meta.glob('./*.md', { eager: true }));

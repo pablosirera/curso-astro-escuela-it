@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HomeTest from '../components/HomeTest/HomeTest.astro';
+import Carousel from '../components/Carousel.vue';
 ---
 
 <Layout title="TechBazar | Tu tienda de confianza">
@@ -15,4 +17,27 @@ import Layout from '../layouts/Layout.astro';
       <p>En TechBazar encontrarás los mejores productos de tecnología a los mejores precios. ¡No te lo pierdas!</p>
     </div>
   </section>
+
+  <Carousel client:only="vue" />
+
+  <HomeTest />
+
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, atque. Minus asperiores nostrum est perspiciatis
+    voluptas tempora. Iste placeat alias porro numquam dolor soluta sit, voluptate quidem, minima ut odio.
+  </p>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, atque. Minus asperiores nostrum est perspiciatis
+    voluptas tempora. Iste placeat alias porro numquam dolor soluta sit, voluptate quidem, minima ut odio.
+  </p>
 </Layout>
+
+<style>
+  p {
+    color: red;
+  }
+
+  :global(article) :global(p) {
+    color: yellow;
+  }
+</style>

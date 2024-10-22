@@ -1,0 +1,30 @@
+---
+import './HomeTest.css';
+import HomeTest2 from '../HomeFoo.astro';
+
+const hasError = false;
+
+const textColor = '#000';
+---
+
+<article class="border rounded border-white">
+  <h1>Home Test</h1>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum, odio nostrum modi aliquid expedita velit sed eveniet
+    maiores ipsum sequi, quam amet aliquam ipsa. Optio laboriosam laborum quos molestiae sapiente.
+  </p>
+
+  <a href="/">Home</a>
+
+  <section class:list={['bg-gray-400', { 'border-2 border-red-600': hasError }]}>
+    <h3>Pequeño titulo</h3>
+  </section>
+
+  <HomeTest2 />
+</article>
+
+<style define:vars={{ textColor }}>
+  section h3 {
+    color: var(--textColor);
+  }
+</style>
