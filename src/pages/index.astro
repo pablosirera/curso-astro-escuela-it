@@ -5,7 +5,9 @@ import Carousel from '../components/Carousel.vue';
 ---
 
 <Layout title="TechBazar | Tu tienda de confianza">
-  <section class="grid gap-8 md:grid-cols-2">
+  <Carousel client:only="vue" />
+
+  <section class="grid gap-8 md:grid-cols-2 mt-12">
     <img
       class="rounded-lg"
       src="https://images.pexels.com/photos/102129/pexels-photo-102129.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -17,27 +19,4 @@ import Carousel from '../components/Carousel.vue';
       <p>En TechBazar encontrarás los mejores productos de tecnología a los mejores precios. ¡No te lo pierdas!</p>
     </div>
   </section>
-
-  <Carousel client:only="vue" />
-
-  <HomeTest />
-
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, atque. Minus asperiores nostrum est perspiciatis
-    voluptas tempora. Iste placeat alias porro numquam dolor soluta sit, voluptate quidem, minima ut odio.
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, atque. Minus asperiores nostrum est perspiciatis
-    voluptas tempora. Iste placeat alias porro numquam dolor soluta sit, voluptate quidem, minima ut odio.
-  </p>
 </Layout>
-
-<style>
-  p {
-    color: red;
-  }
-
-  :global(article) :global(p) {
-    color: yellow;
-  }
-</style>

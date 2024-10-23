@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getNews, getNewBySlug } from '../../lib/notion';
+
+const { slug } = Astro.params;
+
+export async function getStaticPaths() {
+  const news = await getNews();
+
+  return news.map((item) => ({
+    params: { slug: item.slug },
+  }));
+}
+
+const currentNew = await getNewBySlug(slug);
+---
+
+<Layout>
+  <h1>Detalle Noticia: {slug}</h1>
+</Layout>

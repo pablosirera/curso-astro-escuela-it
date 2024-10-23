@@ -1,9 +1,10 @@
 ---
 // @ts-nocheck
 
+import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
-const posts = Object.values(await import.meta.glob('./*.md', { eager: true }));
+const posts = await getCollection('blog');
 ---
 
 <Layout title="Blog">
@@ -13,8 +14,8 @@ const posts = Object.values(await import.meta.glob('./*.md', { eager: true }));
     {
       posts.map((post) => (
         <li class="border border-gray-200 rounded">
-          <a href={post.url}>{post.frontmatter.title}</a>
-          <p>{post.frontmatter.description}</p>
+          <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+          <p>{post.data.description}</p>
         </li>
       ))
     }

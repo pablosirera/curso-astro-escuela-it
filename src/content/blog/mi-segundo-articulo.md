@@ -1,10 +1,10 @@
 ---
-title: 'Mi Tercer Artículo'
-description: 'Es la descripción del Tercer artículo creado'
-layout: '../../layouts/BlogLayout.astro'
+title: 'Mi Segundo Artículo'
+description: 'Es la descripción del segundo artículo creado'
+publishDate: 2024-10-22
 ---
 
-# Mi Tercer Artículo
+# Mi Segundo Artículo
 
 Bienvenido a mi primer artículo en TechBazar. En este espacio, compartiré mis experiencias y conocimientos sobre tecnología, programación y desarrollo web.
 

@@ -1,10 +1,13 @@
 ---
-title: 'Mi Segundo Artículo'
-description: 'Es la descripción del segundo artículo creado'
-layout: '../../layouts/BlogLayout.astro'
+title: 'Mi Primer Artículo'
+description: 'Es la descripción del primer artículo creado'
+publishDate: 2024-09-09
+author: 'Pablo'
 ---
 
-# Mi Segundo Artículo
+# Mi Primer Artículo
+
+Más información sobre el vendedor aquí [TechWorld](/sellers/techworld)
 
 Bienvenido a mi primer artículo en TechBazar. En este espacio, compartiré mis experiencias y conocimientos sobre tecnología, programación y desarrollo web.
 

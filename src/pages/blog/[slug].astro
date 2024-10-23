@@ -1,0 +1,38 @@
+---
+// @ts-nocheck
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout>
+  <h1>{post.data.title}</h1>
+  <h2>{post.data.publishDate}</h2>
+
+  <article>
+    <Content />
+  </article>
+</Layout>
+
+<style is:global>
+  article h1 {
+    font-size: 28px;
+    margin: 10px 0;
+    border-bottom: 1px solid white;
+  }
+  article h2 {
+    font-size: 22px;
+    margin: 10px 0;
+  }
+</style>
