@@ -1,6 +1,8 @@
 import { Client } from "@notionhq/client";
+import { NotionToMarkdown } from 'notion-to-md'
 
 const notion = new Client({ auth: import.meta.env.NOTION_API_KEY });
+const n2m = new NotionToMarkdown({ notionClient: notion });
 
 export async function getNews() {
   const databaseId = import.meta.env.NOTION_DATABASE_ID
@@ -24,6 +26,11 @@ export async function getNewBySlug(slug) {
 
   const currentNew = allNews.find(page => page.slug === slug)
 
-  const response = await notion.blocks.children.list({ block_id: currentNew.id })
-  // console.log(response.results)
+  const blocks = await n2m.pageToMarkdown(currentNew.id)
+  const blocksString = n2m.toMarkdownString(blocks)
+
+  return {
+    ...currentNew,
+    content: blocksString.parent
+  }
 }

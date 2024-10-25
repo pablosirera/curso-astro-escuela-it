@@ -1,6 +1,9 @@
 ---
+// @ts-nocheck
+
 import Layout from '../../layouts/Layout.astro';
 import { getNews, getNewBySlug } from '../../lib/notion';
+import { marked } from 'marked';
 
 const { slug } = Astro.params;
 
@@ -13,8 +16,29 @@ export async function getStaticPaths() {
 }
 
 const currentNew = await getNewBySlug(slug);
+const content = marked.parse(currentNew.content);
 ---
 
-<Layout>
-  <h1>Detalle Noticia: {slug}</h1>
+<Layout title={currentNew.title} description={currentNew.description}>
+  <article>
+    <h1 class="text-3xl mb-4">{currentNew.title}</h1>
+    <p class="text-xl">{currentNew.description}</p>
+
+    <Fragment set:html={content} />
+  </article>
 </Layout>
+
+<style is:global>
+  article {
+    text-align: justify;
+
+    h3 {
+      font-size: 20px;
+      padding: 10px 0;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+  }
+</style>
