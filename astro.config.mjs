@@ -10,6 +10,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   integrations: [tailwind(), vue(), sitemap()],
   site: 'https://techbazar.vercel.app',
+  output: 'hybrid',
   image: {
     domains: ['astro.build']
   }

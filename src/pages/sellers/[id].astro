@@ -1,25 +1,36 @@
 ---
-import SellersTable from '../../components/SellersTable.astro';
+// @ts-nocheck
+
 import Layout from '../../layouts/Layout.astro';
 import { supabase } from '../../lib/supabase';
 
 export const prerender = false;
 
-if (Astro.request.method === 'POST') {
-  const data = await Astro.request.formData();
-  const name = data.get('name');
-  const avatar = data.get('avatar');
-  const location = data.get('location');
+const { id } = Astro.params;
 
-  await supabase.from('sellers').insert([{ name, avatar, location }]);
+if (Astro.request.method === 'POST') {
+  if (Astro.request.url.includes('delete')) {
+    await supabase.from('sellers').delete().eq('id', id);
+  } else {
+    const data = await Astro.request.formData();
+    const name = data.get('name');
+    const avatar = data.get('avatar');
+    const location = data.get('location');
+
+    await supabase.from('sellers').update({ name, avatar, location }).eq('id', id);
+  }
 }
 
-const { data: sellers, error } = await supabase.from('sellers').select('*');
+const { data } = await supabase.from('sellers').select('*').eq('id', id).single();
+const seller = data || {};
 ---
 
-<Layout title="Vendedores de TechBazar">
-  <h1>Vendedores de TechBazar</h1>
-  <p>En esta página encontrarás una lista de los vendedores de TechBazar.</p>
+<Layout title={`Vendedor - ${id}`}>
+  <h1>Página detalle del vendedor #{id}</h1>
+
+  <form action={`/sellers/${id}?delete`} method="post">
+    <button class="bg-red-500 px-6 py-2 rounded-lg my-4 hover:bg-red-800">Delete</button>
+  </form>
 
   <form class="max-w-sm mx-auto my-6" method="POST">
     <div class="mb-5">
@@ -32,6 +43,7 @@ const { data: sellers, error } = await supabase.from('sellers').select('*');
           placeholder="Pepito"
           name="name"
           required
+          value={seller.name}
         />
       </label>
     </div>
@@ -45,6 +57,7 @@ const { data: sellers, error } = await supabase.from('sellers').select('*');
           placeholder="https://randomuser.me/api/example.jpg"
           name="avatar"
           required
+          value={seller.avatar}
         />
       </label>
     </div>
@@ -58,15 +71,20 @@ const { data: sellers, error } = await supabase.from('sellers').select('*');
           placeholder="España"
           name="location"
           required
+          value={seller.location}
         />
       </label>
     </div>
     <button
       class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
     >
-      Crear vendedor
+      Actualizar vendedor
     </button>
   </form>
 
-  <SellersTable sellers={sellers} />
+  <section class="mt-16">
+    <img src={seller.avatar} />
+    <h2>{seller.name}</h2>
+    <p>Where: {seller.location}</p>
+  </section>
 </Layout>
