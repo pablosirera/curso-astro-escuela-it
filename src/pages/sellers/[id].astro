@@ -8,31 +8,18 @@ export const prerender = false;
 
 const { id } = Astro.params;
 
-if (Astro.request.method === 'POST') {
-  if (Astro.request.url.includes('delete')) {
-    await supabase.from('sellers').delete().eq('id', id);
-  } else {
-    const data = await Astro.request.formData();
-    const name = data.get('name');
-    const avatar = data.get('avatar');
-    const location = data.get('location');
-
-    await supabase.from('sellers').update({ name, avatar, location }).eq('id', id);
-  }
-}
-
-const { data } = await supabase.from('sellers').select('*').eq('id', id).single();
-const seller = data || {};
+const response = await fetch(`${new URL(Astro.request.url).origin}/api/sellers/${id}`);
+const seller = await response.json();
 ---
 
 <Layout title={`Vendedor - ${id}`}>
   <h1>Página detalle del vendedor #{id}</h1>
 
-  <form action={`/sellers/${id}?delete`} method="post">
+  <form action={`/api/sellers/${id}?delete`} method="POST">
     <button class="bg-red-500 px-6 py-2 rounded-lg my-4 hover:bg-red-800">Delete</button>
   </form>
 
-  <form class="max-w-sm mx-auto my-6" method="POST">
+  <form class="max-w-sm mx-auto my-6" method="POST" action={`/api/sellers/${id}`}>
     <div class="mb-5">
       <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
         Nombre
