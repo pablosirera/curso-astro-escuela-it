@@ -6,6 +6,8 @@ import vue from '@astrojs/vue';
 
 import sitemap from '@astrojs/sitemap';
 
+import vercel from '@astrojs/vercel/serverless';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), vue(), sitemap()],
@@ -13,5 +15,6 @@ export default defineConfig({
   output: 'hybrid',
   image: {
     domains: ['astro.build']
-  }
+  },
+  adapter: vercel()
 });
